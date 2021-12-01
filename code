@@ -1,0 +1,93 @@
+# Name: Margret Beniameen
+# Student Number: 10474901
+# This file is provided to you as a starting point for the "English Test" program of Assignment 1
+# of Programming Principles in Semester 1, 2019. It mainly provides you with a suitable list of words.
+# Please use this file as the basis for your assignment work. You are not required to reference it.
+# Import the random module to allow us to select words and questions at random.
+import random
+# This function receives a word as a parameter and should return the number of vowels in the word.
+# See the assignment brief for details of this function's requirements.
+def countVowels(word):
+ pass # The "pass" command tells Python to do nothing. It is simply a placeholder for your code.
+# Create a list of words to choose from for the test.
+candidateWords = ['HELLO', 'GOODBYE', 'NAME', 'DAY', 'NIGHT', 'HOUR', 'POTATO', 'BIG', 'SMALL', 'GOOD', 'BAD', 'YES', 'NO', 'HOUSE', 'QUESTION'
+, 'BALLOON', 'CAT', 'DUCK', 'PIGEON', 'POSTER', 'TELEVISION', 'SPY', 'RIPPLE', 'SUBSTANTIAL', 'SNOW', 'MAGNET', 'TOWEL', 'WALKING', 'SPEAKER',
+'UNCHARACTERISTICALLY']
+# random.sample to randomly select 5 words from the list
+wordlist = random.sample(candidateWords, 5)
+Welcome = print('welcome to english test')
+# define countvowels fuction to determine the number of vowels in the word, and return this number back to the program
+#as an integer and will be called where needed in the program
+def countVowels(word):
+ vowels = 0
+ for char in word:
+ if char in 'AEIOU':
+ vowels += 1
+
+ return vowels
+# set score to 0 before looping
+score = 0
+#Enter a loop that repeats once for each word in wordList
+for index, word in enumerate(wordlist):
+ print('word', index + 1,'/5', word)
+ # Generate a random number between 1 and 4
+
+ number = random.randint(1, 4)
+ # use number to choose which question is asked.
+
+ if number == 1:
+ answer = int(input('How many letters does the word contains?: \n> '))
+
+ #len word function returns the length of the string
+
+ if answer == len(word):
+ print ('correct !')
+ score = score + 1
+
+ else:
+ print ('incorrect!', 'Correct answer is', len(word),'.')
+
+ elif number == 2:
+ answer = int(input('how many vowels does the word contains?: \n> '))
+
+ # def countvowels function should be called here
+
+ if answer == countVowels(word):
+ print('correct !')
+ score = score + 1
+
+ else:
+ print('incorrect!', 'correct answer is', countVowels(word),'.')
+
+
+
+ elif number ==3:
+ answer = int(input('how many constant does the word contains?: \n> '))
+ # def countvowels fuction should be called here as well
+ # numbers of constants can be counted by taking the numbers of vowels out of the total numbers of words
+
+ if answer == len(word) - countVowels(word):
+ print('correct !')
+ score = score + 1
+
+
+ else:
+ print('incorrect!', 'correct answer is',len(word) - countVowels(word),'.')
+
+
+ elif number == 4:
+ #randomly select a number within the length of the word
+ letter = random.randint(1, len(word))
+
+ # use.upper() to convert lowercase to uppercase if user enters it
+ answer = input('what is letter ' + str(letter) + ' of the word?: \n> ').upper()
+
+ #to start word inedex from 1 instead of 0 , subtract 1 from letter
+ if answer == word [letter - 1]:
+ print('correct !')
+ score = score + 1
+ else:
+ print('incorrect!', 'correct answer is', word [letter- 1],'.')
+#print a “Game Over” message that includes the user’s score out of 5.
+
+print('Game over, your total score is', score ,'/5')
